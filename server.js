@@ -2,9 +2,11 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const { send } = require("process");
+
+
 //settings
 app.set("port", process.env.PORT || 4000);
-app.set("views", path.join__dirname + "/views");
+app.set("views", path.join__dirname, +"views");
 
 //inicializacions
 
@@ -18,5 +20,10 @@ app.use(express.urlencoded({ extends: false }));
 app.get("/", (req, res) => {
   res.send("hello world");
 });
+
+
+
 //static files
+app.set("views", path.join(__dirname, "views"));
+
 module.exports = app;
