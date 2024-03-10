@@ -1,4 +1,5 @@
 const express = require("express");
+const initDB = require('./database')
 const app = express();
 const path = require("path");
 const { send } = require("process");
@@ -25,5 +26,7 @@ app.get("/", (req, res) => {
 
 //static files
 app.set("views", path.join(__dirname, "views"));
+
+initDB()
 
 module.exports = app;

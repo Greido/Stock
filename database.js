@@ -1,10 +1,18 @@
+const mongoose = require("mongoose");
+const DB_URI = "mongodb://localhost:27017/";
 
-const mongoose = require("mongoose")
-const NOTES_APP_MONGODB_HOST = process.env.MONGODB_URI
+module.exports = () => {
+    const connect = async () => {
+        try {
+            await mongoose.connect(DB_URI, {
+                useNewUrlParser: true,
+                useUnifiedTopology: true
+            });
+            console.log('Conexión exitosa a MongoDB');
+        } catch (error) {
+            console.error('Error de conexión a MongoDB:', error);
+        }
+    };
 
-mongoose.connect(MONGODB_URI,{
-    useUnifiedTopology:true,
-    useNewUrlParser:true
-})
-    .then(db => console.log('Database is connected'))
-    .catch(err=>console.log(err))
+    connect();
+};
